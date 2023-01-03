@@ -1,0 +1,329 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<style>
+    .container
+    {
+        position: relative;
+        height: 900px;
+
+        background: #FFFFFF;
+    }
+
+    .imagebc
+    {
+        position: absolute;
+        width: 720px;
+        height: 899.82px;
+    }
+    .welcome
+    {
+        position: absolute;
+        width: 105px;
+        height: 19px;
+        left: 913px;
+        top: 232px;
+
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        /* identical to box height */
+
+        /* 800 */
+        color: #2D3748;
+    }
+    .text-login
+    {
+        position: absolute;
+        width: 292px;
+        height: 35px;
+        left: 913px;
+        top: 253px;
+
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 35px;
+
+        /* 900 */
+        color: #1A202C;
+    }
+
+    .login-form
+    {
+        position: absolute;
+        width: 350px;
+        height: 215px;
+        left: 913px;
+        top: 312px;
+    }
+
+    .label-email
+    {
+        position: absolute;
+        left: 0%;
+        right: 79.71%;
+        top: 0%;
+        bottom: 91.16%;
+
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        /* identical to box height */
+
+        /* 700 */
+        color: #4A5568;
+    }
+
+    .email
+    {
+        box-sizing: border-box;
+
+        position: absolute;
+        left: 0%;
+        right: 0%;
+        top: 13.95%;
+        bottom: 62.79%;
+
+        border: 1px solid #E8E8E8;
+        border-radius: 5px;
+        text-align: center;
+        font-size: x-large;
+        font-weight: 700;
+    }
+
+    .label-password
+    {
+        position: absolute;
+        left: 0%;
+        right: 88.57%;
+        top: 42.33%;
+        bottom: 48.84%;
+
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        /* identical to box height */
+
+        /* 700 */
+        color: #4A5568;
+    }
+
+    .password
+    {
+        box-sizing: border-box;
+        position: absolute;
+        left: 0%;
+        right: 0%;
+        top: 56.28%;
+        bottom: 20.47%;
+
+        border: 1px solid #E8E8E8;
+        border-radius: 5px;
+        text-align: center;
+        font-size: large;
+        font-weight: 600;
+    }
+    .remember-icon
+    {
+        box-sizing: border-box;
+
+        position: absolute;
+        left: 0%;
+        right: 95.71%;
+        top: 92.56%;
+        bottom: 0.47%;
+
+        /* 100 */
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+    .remember
+    {
+        position: absolute;
+        left: 7.43%;
+        right: 66.29%;
+        top: 92.56%;
+        bottom: 0%;
+
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+
+        /* 800 */
+        color: #2D3748;
+    }
+    .forget-pass
+    {
+        position: absolute;
+        left: 67.71%;
+        right: 0.29%;
+        top: 92.56%;
+        bottom: 0%;
+
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+
+        /* 800 */
+        color: #2C5282;
+        text-decoration: none;
+
+    }
+    .btn-login-simple
+    {
+        position: absolute;
+        width: 347px;
+        height: 50px;
+        left: 915px;
+        top: 554px;
+        background: #04C45C;
+        cursor: pointer;
+    }
+    .btn-login-text
+    {
+        position: absolute;
+        left: 39.48%;
+        right: 39.19%;
+        top: 30%;
+        bottom: 32%;
+
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19px;
+        /* identical to box height */
+
+        color: #FFFFFF;
+
+    }
+    .fcb-login-card
+    {
+        position: absolute;
+        width: 347px;
+        height: 50px;
+        left: 915px;
+        top: 619px;
+       /* background: #2D3748; */
+       background: cornflowerblue;
+    }
+    .fcb-login
+    {
+        position: absolute;
+        width: 177px;
+        left: 31.7%;
+        right: 22.48%;
+        top: 30%;
+        bottom: 32%;
+
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19px;
+        /* identical to box height */
+
+        color: #FFFFFF;
+        text-decoration: none;
+
+    }
+
+    .fcb-icon
+    {
+        position: absolute;
+        left: -278.23%;
+        right: 71.47%;
+        top: -2000%;
+        bottom: 30%;
+        transform: scale(0.02);
+    }
+
+    .account
+    {
+        position: absolute;
+        width: 272px;
+        height: 19px;
+        left: 952px;
+        top: 750px;
+
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        /* identical to box height */
+
+        color: #616161;
+        text-decoration: none;
+    }
+</style>
+
+<div class="container">
+    <img src="{{asset('/image/imagebc.png')}}" alt="" class="imagebc">
+
+    <div>
+       <span class="welcome">welcome</span>
+
+       <h1 class="text-login">Log to your account</h1>
+
+       <div class="login-form">
+         
+        <form action="">
+
+            <label for="email" class="label-email">Email:</label>
+
+            <input type="text" name="email" placeholder="John@gmail.com" class="email">
+          
+            <label for="password" class="label-password">Password</label>
+            <input type="password" name="password" placeholder="**********" class="password">
+
+             <img src="{{asset('/image/remember.png')}}" alt="" class="remember-icon">
+
+             <p class="remember">Remember me</p>
+
+             <a href="#" class="forget-pass">Forget password ?</a>
+            
+        </form>
+
+       </div>
+
+       <div class="login-btn">
+        <form action="">
+            <button type="submit" class="btn-login-simple">
+                <span class="btn-login-text">Login</span>
+              </button>
+        </form>
+         
+       </div>
+
+       <div class="fcb-login-card">
+        
+            <a href="{{path('fcb_login')}}" class="fcb-login">Or sign-in with facebook</a>
+
+            <img src="{{asset('/image/fcb-icon.png')}}" alt="" class="fcb-icon">
+        
+       </div>
+
+          <a href="#" class="account">Dont have an account? Join free today</a>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

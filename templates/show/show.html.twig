@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<style>
+    .container
+    {
+        position: relative;
+        height: 900px;
+
+        background: #FFFFFF;
+    }
+
+    .imagebc
+    {
+        position: absolute;
+        width: 720px;
+        height: 899.82px;
+    }
+    .name
+    {
+        position: absolute;
+        width: 500px;
+        height: 19px;
+        left: 913px;
+        top: 200px;
+
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        /* identical to box height */
+
+        /* 800 */
+        color: #2D3748;
+    }
+    .image-user
+    {
+        position: absolute;
+        width: 292px;
+        height: 318px;
+        left: 913px;
+        top: 253px;
+
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 35px;
+
+        /* 900 */
+        color: #1A202C;
+    }
+
+  
+</style>
+
+<div class="container">
+    <img src="{{asset('/image/imagebc.png')}}" alt="" class="imagebc">
+
+    <div>
+       <span class="name">{{nom}}</span>
+       
+       <img src="{{picture}}" alt="" class="image-user">
+
+      
+    </div>
+
+</div>
+
+
+
+{% endblock %}
