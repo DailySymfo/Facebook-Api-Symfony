@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use League\OAuth2\Client\Provider\Github;
 use League\OAuth2\Client\Provider\Facebook;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,6 +15,8 @@ class HomeController extends AbstractController
 {
 
    private $provider;
+
+   private $github_provider;
 
 
    public function __construct()
@@ -26,10 +29,14 @@ class HomeController extends AbstractController
     ]);
 
 
+    $this->github_provider=new Github([
+        'clientId'          => $_ENV['GITHUB_ID'],
+        'clientSecret'      => $_ENV['GITHUB_SECRET'],
+        'redirectUri'       => $_ENV['GITHUB_CALLBACK'],
+    ]);
+
+
    }
-
-
-
 
     #[Route('/', name: 'app_home')]
     public function index(): Response
@@ -116,6 +123,64 @@ class HomeController extends AbstractController
 
           return $th->getMessage();
        }
+
+
+    }
+
+
+    #[Route('/github-login', name: 'github_login')]
+    public function githubLogin(): Response
+    {
+
+        $options = [
+            'scope' => ['user','user:email'] // On lui passe dans le scope les champs que nous souhaitons récupérer.
+        ];
+
+
+        $helper_url=$this->github_provider->getAuthorizationUrl($options);
+
+        return $this->redirect($helper_url);
+
+
+
+    }
+
+
+     #[Route('/github-callback', name: 'github_callback')]
+    public function githubCallBack(): Response
+    {
+
+        $token = $this->github_provider->getAccessToken('authorization_code', [
+            'code' => $_GET['code']
+        ]);
+
+
+
+      
+        try {
+               //Récupérer les informations de l'utilisateur
+
+               $user=$this->github_provider->getResourceOwner($token);
+
+               $user=$user->toArray();
+
+               $nom=$user['login'];
+
+               $picture=$user['avatar_url'];
+
+               //Vérifier si l'utilisateur existe dans la base des données. Si oui on fait la mise à jour de ses informations. Si non on va créer un nouvel utilisateur.
+
+               return $this->render('show/show.html.twig', [
+                'nom'=>$nom,
+                'picture'=>$picture
+               ]);
+
+
+        } catch (\Throwable $th) {
+            //throw $th;
+
+            return $th->getMessage();
+        }
 
 
     }
