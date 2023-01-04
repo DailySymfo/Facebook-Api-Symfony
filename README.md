@@ -6,3 +6,4 @@ https://oauth2-client.thephpleague.com/providers/league/
 =======
 
 >>>>>>> 8bb54ae602ce18f9078072c55b6815e67748534c
+En seconde partie nous ajoutons l'authentification avec l'Api de Github avec le même bundle.
