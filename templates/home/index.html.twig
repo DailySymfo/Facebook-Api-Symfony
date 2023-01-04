@@ -271,6 +271,46 @@
         color: #616161;
         text-decoration: none;
     }
+
+
+    .github-login-card
+    {
+        position: absolute;
+        width: 347px;
+        height: 50px;
+        left: 915px;
+        top: 685px;
+        border: 1px solid black;
+    }
+
+    .github-login
+    {
+        position: absolute;
+        width: 177px;
+        left: 31.7%;
+        right: 22.48%;
+        top: 30%;
+        bottom: 32%;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19px;
+        color: black;
+        text-decoration: none;
+
+    }
+
+    .github-icon
+    {
+        position: absolute;
+        left: -56%;
+        right: 71.47%;
+        top: -452%;
+        bottom: 30%;
+        transform: scale(0.09);
+    }
+
 </style>
 
 <div class="container">
@@ -316,6 +356,15 @@
             <a href="{{path('fcb_login')}}" class="fcb-login">Or sign-in with facebook</a>
 
             <img src="{{asset('/image/fcb-icon.png')}}" alt="" class="fcb-icon">
+        
+       </div>
+
+
+       <div class="github-login-card">
+        
+            <a href="" class="github-login">Or sign-in with github</a>
+
+            <img src="{{asset('/image/github-icon.png')}}" alt="" class="github-icon">
         
        </div>
 
